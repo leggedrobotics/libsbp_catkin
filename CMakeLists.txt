@@ -20,10 +20,4 @@ ExternalProject_Add(libsbp
   INSTALL_COMMAND $(MAKE) install
 )
 
-cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
-add_dependencies(${PROJECT_NAME} libsbp)
-
-cs_install()
-
-cs_export(INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include
-          CFG_EXTRAS libsbp-extras.cmake)
+cs_export()
