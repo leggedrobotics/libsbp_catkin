@@ -13,14 +13,15 @@ ExternalProject_Add(libsbp
   GIT_TAG v2.6.5
   UPDATE_COMMAND git submodule update --init
   SOURCE_SUBDIR ./c/
-  CMAKE_ARGS -DBUILD_SHARED_LIBS=ON
-  BUILD_COMMAND make
-  INSTALL_COMMAND make install
+  CMAKE_ARGS
+    -DBUILD_SHARED_LIBS=ON
+    -DCMAKE_INSTALL_PREFIX=${CATKIN_DEVEL_PREFIX}
+  BUILD_COMMAND $(MAKE)
+  INSTALL_COMMAND $(MAKE) install
 )
 
 cs_add_library(${PROJECT_NAME} src/dependency_tracker.cc)
 add_dependencies(${PROJECT_NAME} libsbp)
-target_link_libraries(${PROJECT_NAME} ${CATKIN_DEVEL_PREFIX}/lib/liblibsbp${CMAKE_SHARED_LIBRARY_SUFFIX})
 
 cs_install()
 
