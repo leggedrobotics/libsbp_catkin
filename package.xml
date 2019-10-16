@@ -1,6 +1,6 @@
 <package>
   <name>libsbp_catkin</name>
-  <version>4.11.0</version>
+  <version>2.6.5</version>
   <description>Catkin wrapper for libsbp.</description>
   <maintainer email="brik@ethz.ch">Rik Bähnemann</maintainer>
 
