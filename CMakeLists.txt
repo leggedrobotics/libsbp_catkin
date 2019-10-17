@@ -23,4 +23,6 @@ ExternalProject_Add(libsbp
   INSTALL_COMMAND $(MAKE) install
 )
 
-cs_export()
+cs_install()
+cs_export(INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include
+          CFG_EXTRAS libsbp-extras.cmake)
