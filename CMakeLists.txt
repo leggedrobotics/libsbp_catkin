@@ -8,10 +8,13 @@ include(ExternalProject)
 
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
+catkin_python_setup() # Creates python2.7/dist-packages folder.
+
 ExternalProject_Add(libsbp
   GIT_REPOSITORY git@github.com:swift-nav/libsbp.git
   GIT_TAG v2.6.5
-  UPDATE_COMMAND git submodule update --init
+  UPDATE_COMMAND git submodule update --init &&
+                  cp -r ./generator/sbpg ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}
   SOURCE_SUBDIR ./c/
   CMAKE_ARGS
     -DBUILD_SHARED_LIBS=ON
@@ -20,4 +23,6 @@ ExternalProject_Add(libsbp
   INSTALL_COMMAND $(MAKE) install
 )
 
-cs_export()
+cs_install()
+cs_export(INCLUDE_DIRS ${CATKIN_DEVEL_PREFIX}/include
+          CFG_EXTRAS libsbp-extras.cmake)
