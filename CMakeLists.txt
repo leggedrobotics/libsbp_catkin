@@ -25,11 +25,12 @@ ExternalProject_Add(libsbp
 
 ExternalProject_Add(libsettings
   GIT_REPOSITORY git@github.com:swift-nav/libsettings.git
-  GIT_TAG 6b18e36e43e487be202c4d34967896138bb4b299
+  GIT_TAG fd92fd7ba54429fee6a06ab128a90fa5edd74051
   UPDATE_COMMAND git submodule update --init
   CMAKE_ARGS
     -DBUILD_SHARED_LIBS=ON
     -DCMAKE_INSTALL_PREFIX=${CATKIN_DEVEL_PREFIX}
+    -Dlibsettings_ENABLE_PYTHON=OFF
   BUILD_COMMAND $(MAKE)
   INSTALL_COMMAND $(MAKE) install
 )
