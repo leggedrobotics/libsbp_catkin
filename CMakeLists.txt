@@ -12,7 +12,7 @@ catkin_python_setup() # Creates python2.7/dist-packages folder.
 
 ExternalProject_Add(libsbp
   GIT_REPOSITORY https://github.com/swift-nav/libsbp.git
-  GIT_TAG v2.6.5
+  GIT_TAG v2.7.4
   UPDATE_COMMAND git submodule update --init &&
                   cp -r ./generator/sbpg ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_PYTHON_DESTINATION}
   SOURCE_SUBDIR ./c/
