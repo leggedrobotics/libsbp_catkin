@@ -19,6 +19,8 @@ ExternalProject_Add(libsbp
   CMAKE_ARGS
     -DBUILD_SHARED_LIBS=ON
     -DCMAKE_INSTALL_PREFIX=${CATKIN_DEVEL_PREFIX}
+  PATCH_COMMAND
+    COMMAND patch generator/sbpg/specs/yaml2.py ${CMAKE_CURRENT_SOURCE_DIR}/patches/yaml_safe_load.patch
   BUILD_COMMAND $(MAKE)
   INSTALL_COMMAND $(MAKE) install
 )
