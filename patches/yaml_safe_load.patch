@@ -1,18 +1,8 @@
-@@ -53,7 +53,7 @@ def read_spec(filename, verbose=False):
-   """
-   contents = None
-   with open(filename, 'r') as f:
--    contents = yaml.load(f)
-+    contents = yaml.safe_load(f)
-     if contents is None:
-       raise Exception("Empty yaml file: %s." % filename)
-     try:
-@@ -88,7 +88,7 @@ def read_test_spec(filename, verbose=False):
-   """
-   contents = None
-   with open(filename, 'r') as f:
--    contents = yaml.load(f)
-+    contents = yaml.safe_load(f)
-     if contents is None:
-       raise Exception("Empty yaml file: %s." % filename)
-     try:
+56c56
+<     contents = yaml.load(f)
+---
+>     contents = yaml.safe_load(f)
+91c91
+<     contents = yaml.load(f)
+---
+>     contents = yaml.safe_load(f)
