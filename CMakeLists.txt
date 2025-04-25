@@ -8,14 +8,14 @@ include(ExternalProject)
 
 file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/include)
 
-catkin_python_setup() # Creates python2.7/dist-packages folder.
+catkin_python_setup()
 
 ExternalProject_Add(libsbp
   GIT_REPOSITORY https://github.com/swift-nav/libsbp.git
   GIT_TAG v2.7.4
   UPDATE_COMMAND git submodule update --init
-  PATCH_COMMAND
-    COMMAND patch generator/sbpg/specs/yaml2.py ${CMAKE_CURRENT_SOURCE_DIR}/patches/yaml_safe_load.patch
+  # Make the patch idempotent so re‑configuring doesn't hang waiting for input
+  PATCH_COMMAND bash -c "patch -N --silent -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/patches/yaml_safe_load.patch || true"
   SOURCE_SUBDIR ./c/
   CMAKE_ARGS
     -DBUILD_SHARED_LIBS=ON
