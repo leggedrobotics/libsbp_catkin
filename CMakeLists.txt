@@ -15,7 +15,7 @@ ExternalProject_Add(libsbp
   GIT_TAG v2.7.4
   UPDATE_COMMAND git submodule update --init
   # Make the patch idempotent so re‑configuring doesn't hang waiting for input
-  PATCH_COMMAND bash -c "patch -N --silent -p1 -i ${CMAKE_CURRENT_SOURCE_DIR}/patches/yaml_safe_load.patch || true"
+  PATCH_COMMAND bash -c "patch -N --silent generator/sbpg/specs/yaml2.py -i ${CMAKE_CURRENT_SOURCE_DIR}/patches/yaml_safe_load.patch || true"
   SOURCE_SUBDIR ./c/
   CMAKE_ARGS
     -DBUILD_SHARED_LIBS=ON
